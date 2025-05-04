@@ -1,3 +1,14 @@
 #Files
 ouro-final-plan.md
 truth-engine-implementation.md
+node_modules
+.env
+
+# Crypto/Blockchain files
+blockchain-verifier.js
+contracts/
+deploy-contract.js
+web3-utils.js
+public/blockchain.js
+**/web3*.js
+**/blockchain*.js

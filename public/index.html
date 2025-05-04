@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Truth Engine - Fact Checking Platform</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="trust-score-popup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description" content="Truth Engine - A revolutionary fact-checking platform">
+  <!-- Web3 dependencies -->
+  <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js" type="application/javascript"></script>
+</head>
+<body>
+  <!-- Gradient Blur Background Effect -->
+  <div id="gradient-background">
+    <canvas id="gradient-canvas"></canvas>
+  </div>
+  
+  <header>
+    <div class="logo-container">
+      <i class="fas fa-balance-scale logo-icon"></i>
+      <h1>Truth Engine</h1>
+    </div>
+    <p class="tagline">Dedicated to the truth, the whole truth, and nothing but the truth.<span class="terminal-cursor"></span> </p>
+  </header>
+  
+  <main>
+    <section id="verification-form">
+      <div class="section-header">
+        <h2><i class="fas fa-search"></i> Submit content to verify</h2>
+        <div class="blockchain-status" id="blockchain-status">
+          <button id="connect-wallet" class="wallet-button">
+            <i class="fas fa-wallet"></i> Connect Wallet
+          </button>
+          <div id="wallet-info" class="wallet-info hidden">
+            <span class="wallet-address" id="wallet-address">Not connected</span>
+          </div>
+        </div>
+      </div>
+      <form id="claim-form">
+        <textarea id="content-input" placeholder="Paste a statement, social media post, or any content to fact-check..."></textarea>
+        <div class="form-controls">
+          <button type="submit" id="verify-button">
+            <i class="fas fa-check-circle"></i> Verify Facts
+          </button>
+          <div class="examples-dropdown">
+            <button type="button" id="examples-button">
+              <i class="fas fa-lightbulb"></i> Try Examples
+            </button>
+            <div class="dropdown-content" id="examples-list">
+              <a href="#" data-content="The economy is showing signs of improvement with unemployment at 3.7% but inflation remains high at 2.4% despite Fed's efforts.">Economy & Inflation</a>
+              <a href="#" data-content="Apple's market share reached 23.4% in the smartphone market last quarter, while Google's Android maintains 76.1% global dominance.">Tech Market Shares</a>
+              <a href="#" data-content="Global temperatures have risen by 1.2°C since pre-industrial times, with CO2 levels now at 419ppm, the highest in 800,000 years.">Climate Change</a>
+              <a href="#" data-content="Inflation is currently at an astronomical 10.1% percent, Americans are really starting to lose jobs with a 13% unemployment rate.">Economic Claims</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+    
+    <section id="results-container" class="hidden">
+      <div id="loading-indicator" class="hidden scanner-effect">
+        <div class="spinner"></div>
+        <p>Analyzing content and checking facts...</p>
+        <div id="progress-container">
+          <div id="progress-bar">
+            <div id="progress-fill"></div>
+          </div>
+          <div id="progress-percentage">0%</div>
+        </div>
+        <div id="status-message"></div>
+        
+        <!-- Terminal logs display for hacker vibe -->
+        <div id="terminal-logs">
+          <div class="log-entry info">System initialized...</div>
+          <div class="log-entry info">Connecting to trusted sources...</div>
+          <span class="terminal-cursor"></span>
+        </div>
+      </div>
+      
+      <div id="results-display" class="hidden">
+        <div class="results-header">
+          <div class="results-title">
+            <h2><i class="fas fa-clipboard-check"></i> Verification Results</h2>
+            <div id="blockchain-verification-status" class="hidden">
+              <div class="blockchain-badge verified">
+                <i class="fas fa-link"></i> Blockchain Verified
+              </div>
+            </div>
+          </div>
+          <div class="results-actions">
+            <button id="new-verification" class="secondary-button">
+              <i class="fas fa-redo"></i> New Verification
+            </button>
+          </div>
+        </div>
+        
+        <div id="claims-section" class="result-card">
+          <h3><i class="fas fa-list"></i> Claims Identified</h3>
+          <ul id="claims-list" class="animated-list"></ul>
+        </div>
+        
+        <div id="verification-section" class="result-card">
+          <h3><i class="fas fa-check-double"></i> Verification Details</h3>
+          <div id="verification-results"></div>
+        </div>
+        
+        <div id="final-content" class="result-card">
+          <h3><i class="fas fa-pencil-alt"></i> Verified Content</h3>
+          <div class="content-comparison">
+            <div class="content-original">
+              <h4>Original</h4>
+              <div id="original-text" class="content-box"></div>
+            </div>
+            <div class="content-arrow">
+              <i class="fas fa-arrow-right"></i>
+            </div>
+            <div class="content-verified">
+              <h4>Verified</h4>
+              <div id="verified-text" class="content-box"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Truth Engine - A fact-checking platform</p>
+      <p>Powered by AI and human curiosity</p>
+    </div>
+  </footer>
+
+  <div id="error-toast" class="toast hidden">
+    <i class="fas fa-exclamation-circle"></i>
+    <span id="error-message">Error message here</span>
+    <button id="close-error"><i class="fas fa-times"></i></button>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="trust-score.js"></script>
+  <script src="gradient-blur.js"></script>
+  <script src="blockchain.js"></script>
+</body>
+</html>
